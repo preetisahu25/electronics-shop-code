@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int budget, n, m;
+    cout << "Enter budget, number of keyboards, and number of USB drives: ";
+    cin >> budget >> n >> m;
+
+    vector<int> keyboards(n), drives(m);
+
+    cout << "Enter keyboard prices: ";
+    for (int i = 0; i < n; i++)
+        cin >> keyboards[i];
+
+    cout << "Enter drive prices: ";
+    for (int i = 0; i < m; i++)
+        cin >> drives[i];
+
+    int maxSpent = -1;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int total = keyboards[i] + drives[j];
+            if (total <= budget && total > maxSpent) {
+                maxSpent = total;
+            }
+        }
+    }
+
+    cout << "Maximum money that can be spent: " << maxSpent << endl;
+
+    return 0;
+}
